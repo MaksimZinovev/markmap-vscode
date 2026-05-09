@@ -53,6 +53,20 @@ function restoreFolds(node: INode) {
   dfs(node);
 }
 
+function setFoldAll(fold: number) {
+  if (!root) return;
+  root.children?.forEach((child) => {
+    function dfs(n: INode) {
+      n.payload = { ...n.payload, fold };
+      n.children?.forEach((c) => {
+        if (c) dfs(c);
+      });
+    }
+    if (child) dfs(child);
+  });
+  mm.renderData();
+}
+
 const handlers = {
   async setData(data: {
     root?: INode;
@@ -136,11 +150,29 @@ toolbar.register({
   content: createButton('Export'),
   onClick: clickHandler('export'),
 });
+toolbar.register({
+  id: 'expandAll',
+  title: 'Expand all',
+  content: createButton('Expand'),
+  onClick: () => {
+    setFoldAll(0);
+  },
+});
+toolbar.register({
+  id: 'collapseAll',
+  title: 'Collapse all',
+  content: createButton('Collapse'),
+  onClick: () => {
+    setFoldAll(1);
+  },
+});
 toolbar.setItems([
   'zoomIn',
   'zoomOut',
   'fit',
   'recurse',
+  'expandAll',
+  'collapseAll',
   'editAsText',
   'export',
 ]);
