@@ -167,6 +167,8 @@ class MarkmapEditor implements CustomTextEditorProvider {
         data: customCSS,
       });
     };
+    const childCountFontSize = () =>
+      workspace.getConfiguration('markmap').get<number>('childCountFontSize');
     const updateTheme = () => {
       webviewPanel.webview.postMessage({
         type: 'checkTheme',
@@ -186,6 +188,7 @@ class MarkmapEditor implements CustomTextEditorProvider {
             ...globalOptions,
             ...(frontmatter as any)?.markmap,
           },
+          childCountFontSize: childCountFontSize(),
         },
       });
       updateCursor();
@@ -363,6 +366,7 @@ class MarkmapEditor implements CustomTextEditorProvider {
       workspace.onDidChangeConfiguration((e) => {
         if (e.affectsConfiguration('markmap.defaultOptions')) updateOptions();
         if (e.affectsConfiguration('markmap.customCSS')) updateCSS();
+        if (e.affectsConfiguration('markmap.childCountFontSize')) update();
       }),
     ];
     webviewPanel.onDidDispose(() => {

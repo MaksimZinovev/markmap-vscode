@@ -53,6 +53,8 @@ function restoreFolds(node: INode) {
   dfs(node);
 }
 
+let childCountFontSize = 10;
+
 function setFoldAll(fold: number) {
   if (!root) return;
   root.children?.forEach((child) => {
@@ -75,7 +77,9 @@ const handlers = {
         placement?: 'center' | 'visible';
       };
     };
+    childCountFontSize?: number;
   }) {
+    childCountFontSize = data.childCountFontSize ?? 10;
     loading = defer();
     preserveFolds(root);
     await mm.setData((root = data.root), {
@@ -203,7 +207,32 @@ function initialize(mm: Markmap) {
         },
         true,
       );
+    renderChildCounts();
   });
+}
+
+function renderChildCounts() {
+  mm.g.selectAll('.markmap-childcount').remove();
+  if (!childCountFontSize) return;
+  mm.g
+    .selectAll<SVGGElement, INode>(function () {
+      const nodes = Array.from(this.childNodes) as Element[];
+      return nodes.filter((el) => el.tagName === 'g') as SVGGElement[];
+    })
+    .each(function (d) {
+      if (!d.payload?.fold || !d.children?.length) return;
+      const ns = 'http://www.w3.org/2000/svg';
+      const text = document.createElementNS(ns, 'text');
+      text.setAttribute('class', 'markmap-childcount');
+      text.setAttribute('x', String(d.state.rect.x2 - 4));
+      text.setAttribute('y', String(d.state.rect.y2 - 2));
+      text.setAttribute('text-anchor', 'end');
+      text.setAttribute('fill', 'currentColor');
+      text.setAttribute('opacity', '0.4');
+      text.setAttribute('font-size', String(childCountFontSize));
+      text.textContent = String(d.children.length);
+      this.appendChild(text);
+    });
 }
 
 function checkTheme() {

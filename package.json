@@ -1,6 +1,6 @@
 {
   "name": "markmap-vscode",
-  "version": "0.2.12",
+  "version": "0.2.13",
   "description": "Visualize your markdown in VSCode",
   "author": "Gerald <gera2ld@live.com>",
   "license": "MIT",
@@ -97,6 +97,11 @@
           "default": "",
           "markdownDescription": "Custom CSS for Markmap, please don't change this if you are not sure what you are doing. You can test your styles on <https://markmap.js.org> since the SVGs shares the same structure.",
           "editPresentation": "multilineText"
+        },
+        "markmap.childCountFontSize": {
+          "type": "number",
+          "default": 10,
+          "markdownDescription": "Font size for the child count badge shown on collapsed nodes. Set to 0 to hide."
         }
       }
     }
