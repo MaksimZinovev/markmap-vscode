@@ -5,3 +5,5 @@ node_modules
 *.vsix
 .vscode-test-web/
 .vscode/settings.json
+.DS_Store
+.specstory/
