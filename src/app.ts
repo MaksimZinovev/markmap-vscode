@@ -223,19 +223,21 @@ function renderChildCounts() {
       if (!d || !d.payload?.fold || !d.children?.length) return;
       const circle = this.querySelector('circle');
       if (!circle) return;
-      const r = +circle.getAttribute('r') || 6;
+      const cx = +circle.getAttribute('cx') || 0;
+      const cy = +circle.getAttribute('cy') || 0;
       const ns = 'http://www.w3.org/2000/svg';
       const text = document.createElementNS(ns, 'text');
       text.setAttribute('class', 'markmap-childcount');
-      text.setAttribute('x', String(r));
-      text.setAttribute('y', String(r / 2 + 1));
+      text.setAttribute('x', String(cx));
+      text.setAttribute('y', String(cy));
       text.setAttribute('text-anchor', 'middle');
       text.setAttribute('dominant-baseline', 'central');
       text.setAttribute('fill', 'currentColor');
       text.setAttribute('opacity', '0.4');
       text.setAttribute('font-size', String(childCountFontSize));
       text.textContent = String(d.children.length);
-      this.appendChild(text);
+      // Insert after the circle so it renders on top
+      circle.parentNode?.insertBefore(text, circle.nextSibling);
     });
 }
 
