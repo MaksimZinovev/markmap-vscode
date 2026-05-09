@@ -23,6 +23,35 @@ const activeNodeOptions: {
   placement?: 'center' | 'visible';
 } = {};
 let loading: IDeferred<void> | undefined;
+// Preserve fold state across data updates
+const preservedFolds = new Map<string, number>();
+
+function preserveFolds(node: INode | undefined) {
+  preservedFolds.clear();
+  if (!node) return;
+  function dfs(n: INode) {
+    if (n.payload?.fold !== undefined) {
+      preservedFolds.set(n.content, n.payload.fold);
+    }
+    n.children?.forEach((child) => {
+      if (child) dfs(child);
+    });
+  }
+  dfs(node);
+}
+
+function restoreFolds(node: INode) {
+  function dfs(n: INode) {
+    const saved = preservedFolds.get(n.content);
+    if (saved !== undefined) {
+      n.payload.fold = saved;
+    }
+    n.children?.forEach((child) => {
+      if (child) dfs(child);
+    });
+  }
+  dfs(node);
+}
 
 const handlers = {
   async setData(data: {
@@ -34,10 +63,12 @@ const handlers = {
     };
   }) {
     loading = defer();
+    preserveFolds(root);
     await mm.setData((root = data.root), {
       ...defaultOptions,
       ...deriveOptions(data.jsonOptions),
     });
+    restoreFolds(root);
     activeNodeOptions.placement = data.jsonOptions?.activeNode?.placement;
     if (firstTime) {
       await mm.fit();

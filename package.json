@@ -1,6 +1,6 @@
 {
   "name": "markmap-vscode",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "Visualize your markdown in VSCode",
   "author": "Gerald <gera2ld@live.com>",
   "license": "MIT",
@@ -170,5 +170,6 @@
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+  "packageManager": "pnpm@10.33.2+sha512.a90faf6feeab71ad6c6e57f94e0fe1a12f5dcc22cd754db40ae9593eb6a3e0b6b12e3540218bb37ae083404b1f2ce6db2a4121e979829b4aff94b99f49da1cf8"
 }
