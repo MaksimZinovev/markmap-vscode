@@ -234,6 +234,7 @@ function renderChildCounts() {
       text.setAttribute('dominant-baseline', 'central');
       text.setAttribute('fill', 'currentColor');
       text.setAttribute('opacity', '0.4');
+      text.setAttribute('pointer-events', 'none');
       text.setAttribute('font-size', String(childCountFontSize));
       text.textContent = String(d.children.length);
       // Insert after the circle so it renders on top
