@@ -220,7 +220,7 @@ function renderChildCounts() {
       return nodes.filter((el) => el.tagName === 'g') as SVGGElement[];
     })
     .each(function (d) {
-      if (!d.payload?.fold || !d.children?.length) return;
+      if (!d || !d.payload?.fold || !d.children?.length) return;
       const ns = 'http://www.w3.org/2000/svg';
       const text = document.createElementNS(ns, 'text');
       text.setAttribute('class', 'markmap-childcount');
