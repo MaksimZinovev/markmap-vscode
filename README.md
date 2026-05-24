@@ -10,6 +10,9 @@ This extension integrates [markmap](https://markmap.js.org/) into VSCode.
 - Preview markdown files as markmap
 - Edit markdown files in a text editor and the markmap will update on the fly
 - Works offline
+- **Expand All / Collapse All** toolbar buttons to quickly expand or collapse all branches
+- **Child count badge** on collapsed nodes showing the number of hidden children (font size configurable via `markmap.childCountFontSize`)
+- **Preserved fold state** — collapsed/expanded branches stay consistent across live edits
 
 <img width="1014" alt="markmap" src="https://user-images.githubusercontent.com/3139113/97068999-5f9e8480-15ff-11eb-8222-43d26cecade5.png">
 
