@@ -1,4 +1,22 @@
+<div align="center">
+
+<img src="assets/favicon.png" width="64" height="64" alt="Markmap logo">
+
 # markmap-vscode
+
+**Visualize your markdown as mindmaps in VS Code**
+
+</div>
+
+<p align="center">
+  <a href="#features">Features</a> ·
+  <a href="#usage">Usage</a> ·
+  <a href="#configuration">Configuration</a> ·
+  <a href="https://markmap.js.org/">markmap.js.org</a> ·
+  <a href="https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode">Marketplace</a>
+</p>
+
+---
 
 [![vscode](https://img.shields.io/visual-studio-marketplace/v/gera2ld.markmap-vscode)](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode)
 [![open vsx](https://img.shields.io/open-vsx/v/gera2ld/markmap-vscode)](https://open-vsx.org/extension/gera2ld/markmap-vscode)
