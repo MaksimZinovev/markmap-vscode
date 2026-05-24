@@ -18,8 +18,10 @@
 
 ---
 
-[![vscode](https://img.shields.io/visual-studio-marketplace/v/gera2ld.markmap-vscode)](https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode)
-[![open vsx](https://img.shields.io/open-vsx/v/gera2ld/markmap-vscode)](https://open-vsx.org/extension/gera2ld/markmap-vscode)
+<p align="center">
+  <a href="https://marketplace.visualstudio.com/items?itemName=gera2ld.markmap-vscode"><img src="https://img.shields.io/visual-studio-marketplace/v/gera2ld.markmap-vscode" alt="VS Code Marketplace"></a>
+  <a href="https://open-vsx.org/extension/gera2ld/markmap-vscode"><img src="https://img.shields.io/open-vsx/v/gera2ld/markmap-vscode" alt="Open VSX"></a>
+</p>
 
 This extension integrates [markmap](https://markmap.js.org/) into VSCode.
 
